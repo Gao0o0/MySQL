@@ -3,11 +3,10 @@ use stu;
 CREATE TABLE school(
     pno char(5) PRIMARY KEY,
     pname char(30) UNIQUE NOT NULL, 
-    dname char(30) UNIQUE NOT NULL
+    dname char(30) NOT NULL
 )character set utf8;
 CREATE TABLE information ( 
     sno char(12) PRIMARY KEY,
-    id char(18) UNIQUE NOT NULL,
     sname char(10) NOT NULL,
     sex CHAR(2) CHECK (sex IN('男','女')),
     birth date NOT NULL,
@@ -25,7 +24,7 @@ CREATE TABLE course(
 )character set utf8;
 CREATE TABLE score(
     sno char(12),
-    cno char(5),
+    cno char(6),
     grade SMALLINT CHECK(grade >=0 and grade <=100),
     PRIMARY KEY (sno,cno),
     FOREIGN KEY(sno) REFERENCES information(sno),
@@ -39,3 +38,25 @@ CREATE TABLE teacher(
 use stu;
 insert into school
 values('10905','软件工程','信息工程学院');
+insert into school
+values ('10904','网络工程','信息工程学院');
+insert into school
+values ('10501','会计学','会计学院');
+insert into school
+values ('10502','财务管理','会计学院');
+insert into school
+values ('10202','金融','商学院');
+insert into information
+values ('414109070128','小明','男','1992-6-25','12892633456','石家庄市','10905');
+insert into information
+values ('414105010128','小婉','女','1996-6-25','13892633456','合肥市','10501');
+insert into course
+values ('120001','C语言',null,3);
+insert into course
+values ('120101','数据结构','120001',3);
+insert into course
+values ('120111','高等数学',null,3.5);
+insert into score
+values ('414109070128','120001',89);
+insert into score
+values ('414109070128','120101',null);
