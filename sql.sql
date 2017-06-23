@@ -55,6 +55,11 @@ CREATE TABLE teacher(
     tname char(10),
     salary SMALLINT CHECK(salary >0)
 )character set utf8;
+create table sessions(
+	id char(12) primary key
+)character set utf8;
+insert into sessions
+values('414105010128');
 use stu;
 insert into school
 values('10905','软件工程','信息工程学院','1');
@@ -107,7 +112,7 @@ with check option;
 /*alter table course add att smallint default 0 check(att =0 or att=1);*/
 
 use stu;
-create view SC(学号,姓名,课称号,课程名称,成绩)
+create view SC(学号,姓名,课程号,课程名称,成绩)
 as 
 select information.sno,information.sname,course.cno,course.cname,score.grade
 from course,information,score
